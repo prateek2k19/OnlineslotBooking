@@ -1,0 +1,32 @@
+<nav class ="navbar navbar-dark bg-dark ustify-content-between"><a class="navbar-brand"> <img width="70" height="60" class="d-inline-block align-center" src="../../assets/images/bookmyslot_logo2.png" alt="">BookMySlot</a><button class="btn btn-danger" id="logout" (click)="logoutUser()">Logout</button></nav>
+<div class="storeTitle"><span>{{storeDetails.name}}</span> <ngb-rating [max]="5" [(rate)]=currentRate [readonly]="true"></ngb-rating></div>
+
+<hr>
+
+
+<div class="row times">
+    
+    <div class="col-xs-4 text-center" *ngFor="let day of days">
+        <div>{{day.name}}</div>
+             
+      
+      
+      <div class="time-slot" *ngFor="let slot of day.slots">    	
+        <!-- <input type="checkbox" ng-model="slot.booked" ng-disabled="slot.booked"> -->
+        <div *ngIf=slot.booked class="bo" style="background:#f2dede;">
+            <span style="background:#f2dede;">{{slot.time}}</span>
+            <span>Booked</span>
+        </div>
+        <div *ngIf=!slot.booked class="av" style="background:#6AB074;">
+            <span style="background:#6AB074;">{{slot.time}}</span>
+            <span> <a (click)= "openModal(storeDetails.name,slot.time,day.name)">Available</a></span>
+        </div>
+        <!-- <label>{{ slot.time }}<br>
+          <span *ngIf=slot.booked>Booked</span>
+           <span *ngIf=!slot.booked>Available</span> 
+        </label> -->
+      </div>
+      
+    </div>       
+      
+  </div>    

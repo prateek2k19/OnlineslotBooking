@@ -1,0 +1,36 @@
+<nav class ="navbar navbar-dark bg-dark ustify-content-between"><a class="navbar-brand"> <img width="70" height="60" class="d-inline-block align-center" src="../../assets/images/bookmyslot_logo2.png" alt="">BookMySlot</a><button class="btn btn-danger" id="logout" (click)="logoutUser()">Logout</button></nav>
+
+<div class="container text-center">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="search-store">
+        <input
+          class="form-control"
+          type="text"
+          name="search"
+          [(ngModel)]="searchText"
+          autocomplete="off"
+          placeholder="   Start searching for a store nearby"
+        />
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Store Name</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let store of stores | filter:searchText">
+            <td>{{store.id}}</td>
+            <td><a [routerLink]="['/store',store.id]">{{store.name}}</a></td>
+            <td>{{store.rating}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
